@@ -1,7 +1,8 @@
 CREATE TABLE `Genres`(
 	`genreID` INT AUTO_INCREMENT NOT NULL, 
 	`genreName` varchar(255) NOT NULL,
-	PRIMARY KEY (`genreID`));
+	PRIMARY KEY (`genreID`)
+)ENGINE=InnoDB;
  
 INSERT INTO `Genres` (`id`, `genreName`) VALUES
 	(1, 'SciFi'),
@@ -18,7 +19,8 @@ CREATE TABLE `Books`(
 	`bookTitle` varchar(225) NOT NULL,
 	`publisher` varchar(225),
 	`publishedDate` DATE,
-	PRIMARY KEY(`ISBN`));
+	PRIMARY KEY(`ISBN`)
+	)ENGINE=InnoDB;
 
 INSERT INTO `Books`(`ISBN`, `bookTitle`, `publisher`, `publishedDate`) VALUES
 	('9780446310789', 'To Kill a Mocking Bird', 'Grand Central Publishing', '1988-10-28'),
@@ -34,10 +36,11 @@ CREATE TABLE `BookGenres`(
 	`genreID` INT NOT NULL, 
 	`ISBN` INT UNIQUE NOT NULL,
 	PRIMARY KEY(`genreID`, `ISBN`),
-	FOREIGN KEY fk_genreID(genreID) REFERENCES Genres(genreID) 
+	CONSTRAINT `fk_genreID` FOREIGN KEY(`genreID`) REFERENCES `Genres`(`genreID`) 
 		ON DELETE CASCADE,
-	FOREIGN KEY fk_ISBN(ISBN) REFERENCES Books(ISBN)
-		ON DELETE CASCADE,
+	CONSTRAINT `fk_ISBN` FOREIGN KEY(`ISBN`) REFERENCES `Books`(`ISBN`)
+		ON DELETE CASCADE
+	)ENGINE=InnoDB;
 
 INSERT INTO `BookGenres`(`genreID`, `ISBN`) VALUES
 	(7, '9781982127794'),
