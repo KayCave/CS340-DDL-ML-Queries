@@ -4,18 +4,18 @@ CREATE TABLE `Genres`(
 	PRIMARY KEY (`genreID`)
 )ENGINE=InnoDB;
  
-INSERT INTO `Genres` (`id`, `genreName`) VALUES
+INSERT INTO `Genres` (`genreID`, `genreName`) VALUES
 	(1, 'SciFi'),
 	(2, 'Fantasy'),
 	(3, 'Non-Fiction'),
 	(4, 'Biography'),
 	(5, 'Young Adult'),
 	(6, 'Horror'),
-	(7, 'Historical')
+	(7, 'Historical'),
 	(8, 'Fiction'); 
   
 CREATE TABLE `Books`(
-	`ISBN` INT UNIQUE NOT NULL, 
+	`ISBN` varchar(255) NOT NULL UNIQUE, 
 	`bookTitle` varchar(225) NOT NULL,
 	`publisher` varchar(225),
 	`publishedDate` DATE,
@@ -27,19 +27,16 @@ INSERT INTO `Books`(`ISBN`, `bookTitle`, `publisher`, `publishedDate`) VALUES
 	('9781982127794', 'It', 'Scribner', '1986-09-15'),
 	('9780451531568', 'The Story of My Life', 'Random House','2010-06-01'),
 	('9780316007443', 'Twilight', 'Little Brown', '2007-07-18'),
-	('9780261103252', 'The Lord of the Rings', 'Allen & Unwin', '1954-07-29'),
-	('9780261103252', 'The Lord of the Rings', 'Allen & Unwin', '1954-07-29'),
+	('9780261103252', 'The Lord of the Ringshow tabless', 'Allen & Unwin', '1954-07-29'),	
 	('9780618260300', 'The Hobbit', 'Allen & Unwin', '1937-09-27'),
 	('9780812550702', 'Ender''s Game', 'St Martin''s Press', '1998-11-30');
  
 CREATE TABLE `BookGenres`(
 	`genreID` INT NOT NULL, 
-	`ISBN` INT UNIQUE NOT NULL,
+	`ISBN` varchar(225) NOT NULL UNIQUE,
 	PRIMARY KEY(`genreID`, `ISBN`),
-	CONSTRAINT `fk_genreID` FOREIGN KEY(`genreID`) REFERENCES `Genres`(`genreID`) 
-		ON DELETE CASCADE,
-	CONSTRAINT `fk_ISBN` FOREIGN KEY(`ISBN`) REFERENCES `Books`(`ISBN`)
-		ON DELETE CASCADE
+	FOREIGN KEY(`genreID`) REFERENCES `Genres`(`genreID`),
+	FOREIGN KEY(`ISBN`) REFERENCES `Books`(`ISBN`)
 	)ENGINE=InnoDB;
 
 INSERT INTO `BookGenres`(`genreID`, `ISBN`) VALUES
