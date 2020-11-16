@@ -27,7 +27,7 @@ INSERT INTO `Books`(`ISBN`, `bookTitle`, `publisher`, `publishedDate`) VALUES
 	('9781982127794', 'It', 'Scribner', '1986-09-15'),
 	('9780451531568', 'The Story of My Life', 'Random House','2010-06-01'),
 	('9780316007443', 'Twilight', 'Little Brown', '2007-07-18'),
-	('9780261103252', 'The Lord of the Ringshow tabless', 'Allen & Unwin', '1954-07-29'),	
+	('9780261103252', 'The Lord of the Rings', 'Allen & Unwin', '1954-07-29'),	
 	('9780618260300', 'The Hobbit', 'Allen & Unwin', '1937-09-27'),
 	('9780812550702', 'Ender''s Game', 'St Martin''s Press', '1998-11-30');
  
